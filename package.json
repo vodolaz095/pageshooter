@@ -1,5 +1,5 @@
 {
-    "name":"printTest",
+    "name":"screenCapturer",
     "version":"0.0.1",
     "private":true,
     "scripts":{
