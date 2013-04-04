@@ -30,9 +30,9 @@ exports.index=function(request,response){
         });
     } else {
         response.send('' +
-            '<html><title>WHERE DO WE GO TODAY?</title><body>' +
+            '<html><head><title>WHERE DO WE GO TODAY?</title></head><body>' +
             '<h1>Enter URL</h1>'+
-            '<form action="" method="get"><input type="text" name="url" value="http://google.com"><input type="submit" value="Go"></form> ' +
+            '<form action="/" method="get"><input type="text" name="url" value="http://google.com?q=sample"><input type="submit" value="Go!"></form> ' +
             '</body></html>');
     }
 }
