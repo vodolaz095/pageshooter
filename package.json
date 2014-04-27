@@ -1,13 +1,20 @@
 {
     "name":"pageshooter",
     "version":"0.0.3",
-    "private":true,
+    "os" : [ "linux" ],
     "scripts":{
-        "start":"node app.js"
+       "start":"node app.js"
     },
     "engines":{
-      "node":">0.10.26"
+      "node": ">=0.10.26",
+      "npm": ">=1.4.3"
     },
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:vodolaz095/pageshooter.git"
+    },
+    "homepage": "https://pageshooter.herokuapp.com/",
+    "license": "MIT",
     "dependencies":{
         "hunt":">=0.0.20",
         "phantomjs":"*"
