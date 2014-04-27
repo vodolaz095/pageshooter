@@ -1,4 +1,4 @@
 .idea
 node_modules
-public/results
+public/results/
 .geany

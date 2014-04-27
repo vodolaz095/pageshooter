@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Host: pageshooter.herokuapp.com
+Sitemap: https://pageshooter.herokuapp.com/sitemap.xml
