@@ -1,6 +1,8 @@
 {
     "name":"pageshooter",
-    "version":"0.0.3",
+    "description":"Simple HuntJS powered application to make site screenshots.",
+    "keywords":["screenshot","siteshot","phantomjs","parser","png"],
+    "version":"0.0.4",
     "os" : [ "linux" ],
     "scripts":{
        "start":"node app.js"
