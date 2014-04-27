@@ -10,7 +10,6 @@ var model = {
 }
 
 model.siteshotUrl.subscribe(function(newUrl){
-  console.log('Changed', newUrl);
   if(newUrl){
     socket.emit('siteshot', newUrl);
   } else {
@@ -21,7 +20,6 @@ model.siteshotUrl.subscribe(function(newUrl){
 ko.applyBindings(model);
 
 socket.on('siteshotResult', function(data){
-  console.log(data);
   model.locked(data.locked);
   model.message(data.message);
   model.imageUrl(data.imageUrl);
