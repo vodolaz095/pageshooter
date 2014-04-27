@@ -4,8 +4,6 @@ PageShooter
 Simple nodejs application to take screenshots of sites in form of
 `PNG` images.
 
-
-
 Powered by
 
 -  [HuntJS](https://huntjs.herokuapp.com)
