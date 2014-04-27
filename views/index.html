@@ -1,0 +1,15 @@
+<label for="siteshotUrl">Enter URL</label>
+<input
+  type="text"
+  class="form-control"
+  data-bind = "valueUpdate: 'input', value: siteshotUrl, disabled : locked "
+  value = ""
+  id="siteshotUrl"
+  placeholder="https://huntjs.herokuapp.com/">
+
+<p data-bind="text: message"></p>
+<p data-bind="if: imageUrl">
+  <a data-bind="attr: {href: imageUrl}">
+    <img data-bind="attr: {src: imageUrl}" width="300"/>
+  </a>
+</p>

@@ -1,16 +1,15 @@
 {
-    "name":"screenCapturer",
-    "version":"0.0.1",
+    "name":"pageshooter",
+    "version":"0.0.3",
     "private":true,
     "scripts":{
-        "start":"node app"
+        "start":"node app.js"
     },
     "engines":{
-        "node":"0.10.x",
-        "npm":"1.2.x"
+      "node":">0.10.26"
     },
     "dependencies":{
-        "express":"*",
+        "hunt":">=0.0.20",
         "phantomjs":"*"
     }
 }
