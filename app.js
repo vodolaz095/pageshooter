@@ -65,6 +65,8 @@ Hunt.once('start', function(startParameters){
                 if (err) throw err;
                 socket.emit('siteshotResult', {'locked':false, 'url':params.href, 'imageUrl': '/results/'+path.basename(imageName)});
               });
+            } else {
+                socket.emit('siteshotResult', {'locked':false, 'url':params.href, 'message':'Response code is not 200. Canceling...');
             }
           });
           req.on('error', function(error){
