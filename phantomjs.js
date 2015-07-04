@@ -3,7 +3,7 @@ var page = require('webpage').create(),
   address = system.args[1],
   output = system.args[2];
 
-page.viewportSize = { 'width': 768, 'height': 1366 };
+page.viewportSize = { 'width': 1024, 'height': 768 };
 
 page.open(address, function (status) {
   if (status !== 'success') {
