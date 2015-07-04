@@ -1,13 +1,12 @@
-var hunt = require('hunt'),
+var
+  hunt = require('hunt'),
   path = require('path'),
   url = require('url'),
   childProcess = require('child_process'),
   request = require('http').request,
   phantomjs = require('phantomjs'),
   Hunt = hunt({
-    'io': {
-      'loglevel': 0
-    },
+    'io': true,
     'enableMongoose':false,
     'enableMongooseUsers':false,
     'public': __dirname+'/public/',
@@ -16,16 +15,16 @@ var hunt = require('hunt'),
   });
 
 Hunt.extendApp(function(core){
+  core.app.locals.delimiters = '[[ ]]';
   core.app.locals.css.push({'href': '//yandex.st/bootstrap/3.1.1/css/bootstrap.min.css', 'media': 'screen'});
-
   core.app.locals.javascripts.push({'url': '//yandex.st/jquery/2.0.3/jquery.min.js'});
   core.app.locals.javascripts.push({'url':'//yandex.st/bootstrap/3.1.1/js/bootstrap.min.js'});
   core.app.locals.javascripts.push({'url':'//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js'});
   core.app.locals.javascripts.push({'url': '/javascripts/hunt.js'});
 });
 
-Hunt.extendRoutes(function(core){
-  core.app.get('/', function(request,response){
+Hunt.extendController('/',function(core, router){
+  router.get('/', function(request,response){
     response.render('index', {
       'title' : 'PageShooter Application',
       'keywords':'screenshot, url, png, jpg, save, picture',
@@ -33,8 +32,6 @@ Hunt.extendRoutes(function(core){
     });
   });
 });
-
-Hunt.startCluster({'web': 1});
 
 Hunt.once('start', function(startParameters){
 //if application is started as background service, it do not have socket.io support
@@ -76,9 +73,9 @@ Hunt.once('start', function(startParameters){
         } else {
           socket.emit('siteshotResult', {'locked':false, 'message':'Unable to parse Url!', url: params.href});
         }
-
       });
     });
   }
 });
 
+Hunt.startCluster({'web': 1});

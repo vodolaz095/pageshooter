@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{title}}</title>
-    <meta name="keywords" content="{{keywords}}"/>
-    <meta name="description" content="{{description}}/">
+    <title>[[title]]</title>
+    <meta name="keywords" content="[[keywords]]"/>
+    <meta name="description" content="[[description]]/">
     <meta name="author" content="vodolaz095"/>
-    {{#css}}
-    <link rel="stylesheet" href="{{href}}" type="text/css" media="{{media}}"/>
-    {{/css}}
+    [[#css]]
+    <link rel="stylesheet" href="[[href]]" type="text/css" media="[[media]]"/>
+    [[/css]]
     <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 </head>
 <body>
@@ -20,8 +20,8 @@
              alt="Fork me on GitHub" data-canonical-src="//s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
     </a>
     <div class="jumbotron">
-        <h1>{{title}}</h1>
-        <h2>{{description}}</h2>
+        <h1>[[title]]</h1>
+        <h2>[[description]]</h2>
     </div>
     <article class="container">
       <div class="row">
@@ -39,7 +39,7 @@
         </div>
         <div class="col-md-4">
   <!-- YIELD START -->
-  {{{ yield }}}
+  [[& yield ]]
   <!-- YIELD STOP -->
         </div>
         <div class="col-md-4">
@@ -62,9 +62,9 @@
         <p>Powered by <a href="//huntjs.herokuapp.com">HuntJS Framework</a></p>
     </div>
 </footer>
-{{#javascripts}}
-<script type="text/javascript" src="{{url}}"></script>
-{{/javascripts}}
+[[#javascripts]]
+<script type="text/javascript" src="[[url]]"></script>
+[[/javascripts]]
 <!--[if lt IE 9]>
 <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
