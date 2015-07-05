@@ -1,8 +1,10 @@
-<label for="siteshotUrl">Enter URL</label>
+<label for="siteshotUrl">
+  Enter URL <span data-bind="text: runner"></span>
+</label>
 <input
   type="text"
   class="form-control"
-  data-bind = "valueUpdate: 'input', value: siteshotUrl, disabled : locked "
+  data-bind = "valueUpdate: 'input', value: siteshotUrl, disable: locked"
   value = ""
   id="siteshotUrl"
   placeholder="https://huntjs.herokuapp.com/">

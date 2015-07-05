@@ -1,6 +1,7 @@
 var
   socket = io(),
   model = {
+    'runner': ko.observable(''),
     'message': ko.observable(),
     'siteshotUrl': ko.observable(),
     'imageUrl': ko.observable(false),
@@ -13,9 +14,10 @@ model.siteshotUrl.subscribe(function (newUrl) {
     model.message('Enter URL...');
   }
 });
+ko.applyBindings(model);
 socket.on('siteshotResult', function (data) {
+  model.runner(data.runner);
   model.locked(data.locked);
   model.message(data.message);
   model.imageUrl(data.imageUrl);
 });
-ko.applyBindings(model);
