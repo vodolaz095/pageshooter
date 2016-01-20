@@ -1,4 +1,5 @@
 var
+  tt,
   socket = io(),
   model = {
     'runner': ko.observable(''),
@@ -9,7 +10,12 @@ var
   };
 model.siteshotUrl.subscribe(function (newUrl) {
   if (newUrl) {
-    socket.emit('siteshot', newUrl);
+    if(tt){
+      clearInterval(tt);
+    }
+    tt = setTimeout(function(){
+      socket.emit('siteshot', newUrl);
+    }, 1000);
   } else {
     model.message('Enter URL...');
   }

@@ -1,4 +1,5 @@
 var
+  winston = require('winston'),
   hunt = require('hunt'),
   path = require('path'),
   url = require('url'),
@@ -13,13 +14,18 @@ var
     'maxWorkers': 2
   });
 
+winston.cli();
+
 Hunt.extendApp(function (core) {
   core.app.locals.delimiters = '[[ ]]';
-  core.app.locals.css.push({ 'href': '//yandex.st/bootstrap/3.1.1/css/bootstrap.min.css', 'media': 'screen' });
-  core.app.locals.javascripts.push({ 'url': '//yandex.st/jquery/2.0.3/jquery.min.js' });
-  core.app.locals.javascripts.push({ 'url': '//yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' });
-  core.app.locals.javascripts.push({ 'url': '//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js' });
-  core.app.locals.javascripts.push({ 'url': '/javascripts/hunt.js' });
+//load assets
+  if (core.config.env === 'production') {
+    core.injectJsFromDirectory(['public/dist/dist.min.js']);
+    core.injectCssFromDirectory(['public/dist/dist.min.css']);
+  } else {
+    core.injectJsFromDirectory(['public/dist/vendor.min.js', 'public/javascripts/*.js']);
+    core.injectCssFromDirectory(['public/dist/vendor.min.css', 'public/styles/*.css']);
+  }
 });
 
 Hunt.extendController('/', function (core, router) {
@@ -53,6 +59,7 @@ Hunt.once('start', function (startParameters) {
         clearTimeout(t);
         clearInterval(tt);
         if (wtg && params.host && params.protocol === 'http:' || params.protocol === 'https:') {
+
           var childArgs = [
             path.join(__dirname, 'phantomjs.js'),
             params.href,
@@ -72,6 +79,7 @@ Hunt.once('start', function (startParameters) {
               'message': 'Trying to parse ' + params.href,
               'runner': x.join('')
             });
+            winston.info('Trying to parse %s', wtg);
 
             tt = setInterval(function () {
               x.push('.');
@@ -88,8 +96,7 @@ Hunt.once('start', function (startParameters) {
               x = [];
               clearInterval(tt);
               if (error) {
-                console.log(error);
-                console.log(stderr.toString());
+                winston.error('Error parsing %s - %s', wtg, stderr.toString(), error);
                 socket.emit('siteshotResult', {
                   'locked': false,
                   'imageUrl': false,
@@ -98,6 +105,7 @@ Hunt.once('start', function (startParameters) {
                   'runner':''
                 });
               } else {
+                winston.info('Success parsing %s', wtg);
                 socket.emit('siteshotResult', {
                   'locked': false,
                   'imageUrl': '/results/' + path.basename(imageName),
@@ -107,7 +115,7 @@ Hunt.once('start', function (startParameters) {
                 });
               }
             });
-          }, 1500);
+          }, 3000);
         } else {
           socket.emit('siteshotResult', { 'locked': false, 'message': 'Unable to parse Url!', url: '' });
         }

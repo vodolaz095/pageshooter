@@ -1,24 +1,48 @@
 {
-    "name":"pageshooter",
-    "description":"Simple HuntJS powered application to make site screenshots.",
-    "keywords":["screenshot","siteshot","phantomjs","parser","png"],
-    "version":"0.0.7",
-    "os" : [ "linux" ],
-    "scripts":{
-       "start":"node app.js"
-    },
-    "engines":{
-      "node": ">=5.4.0",
-      "npm": ">=3.3.12"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git@github.com:vodolaz095/pageshooter.git"
-    },
-    "homepage": "https://pageshooter.herokuapp.com/",
-    "license": "MIT",
-    "dependencies":{
-        "hunt":"0.6.5",
-        "phantomjs":"1.9.19"
-    }
+  "name": "pageshooter",
+  "description": "Simple HuntJS powered application to make site screenshots.",
+  "keywords": [
+    "screenshot",
+    "siteshot",
+    "phantomjs",
+    "parser",
+    "png"
+  ],
+  "version": "0.0.7",
+  "os": [
+    "linux"
+  ],
+  "scripts": {
+    "install": "./node_modules/.bin/gulp",
+    "frontend": "./node_modules/.bin/gulp",
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": ">=5.4.0",
+    "npm": ">=3.3.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vodolaz095/pageshooter.git"
+  },
+  "homepage": "https://pageshooter.herokuapp.com/",
+  "license": "MIT",
+  "dependencies": {
+    "bower": ">=1.7.2",
+    "del": "^2.2.0",
+    "gulp": ">=3.8.11",
+    "gulp-bower": ">=0.0.10",
+    "gulp-concat": ">=2.6.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-filter": ">=3.0.1",
+    "gulp-less": "^3.0.5",
+    "gulp-minify-css": ">=1.2.1",
+    "gulp-rename": ">=1.2.2",
+    "gulp-uglify": ">=1.4.0",
+    "hunt": ">=0.6.4",
+    "main-bower-files": ">=2.9.0",
+    "phantomjs": "1.9.19",
+    "request": ">=2.60.0",
+    "winston": "^2.1.1"
+  }
 }
